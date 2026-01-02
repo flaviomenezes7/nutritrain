@@ -1,0 +1,16 @@
+/* Reveal on scroll styles */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px) scale(0.995);
+  transition: opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Small stagger utility when using data-reveal-delay (ms) */
+.reveal[data-reveal-delay] {
+  transition-delay: 0ms; /* will be set inline by JS if needed */
+}

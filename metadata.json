@@ -1,0 +1,8 @@
+
+{
+  "name": "NutriTrain - Saúde Integrada",
+  "description": "Uma plataforma de saúde holística que une Educação Física, Fisioterapia e Nutrição para transformar vidas através de um acompanhamento 360 graus.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
