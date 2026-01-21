@@ -14,6 +14,8 @@ type Props = {
   setNutWeight: (v: string) => void;
   nutHabits: string;
   setNutHabits: (v: string) => void;
+  nutRestrictions: string;
+  setNutRestrictions: (v: string) => void;
   nutAllergy: string;
   setNutAllergy: (v: string) => void;
   nutGoal: string;
@@ -29,6 +31,8 @@ const NutricaoForm: React.FC<Props> = ({
   setNutWeight,
   nutHabits,
   setNutHabits,
+  nutRestrictions,
+  setNutRestrictions,
   nutAllergy,
   setNutAllergy,
   nutGoal,
@@ -95,7 +99,9 @@ const NutricaoForm: React.FC<Props> = ({
         />
       </div>
       <div className="space-y-2 md:col-span-3">
-        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Hábitos alimentares</label>
+        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">
+          Hábitos alimentares <span className="font-semibold text-slate-500">(o que não pode faltar na sua dieta)</span>
+        </label>
         <input
           value={nutHabits}
           onChange={(e) => setNutHabits(e.target.value)}
@@ -103,7 +109,15 @@ const NutricaoForm: React.FC<Props> = ({
         />
       </div>
       <div className="space-y-2 md:col-span-3">
-        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Restrições / Alergias</label>
+        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Restrições alimentares</label>
+        <input
+          value={nutRestrictions}
+          onChange={(e) => setNutRestrictions(e.target.value)}
+          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+        />
+      </div>
+      <div className="space-y-2 md:col-span-3">
+        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Intolerância alimentar / Alergia alimentar</label>
         <input
           value={nutAllergy}
           onChange={(e) => setNutAllergy(e.target.value)}

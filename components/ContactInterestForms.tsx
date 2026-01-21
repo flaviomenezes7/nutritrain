@@ -25,6 +25,7 @@ export type InterestFormValues = {
   nutHeight: string;
   nutWeight: string;
   nutHabits: string;
+  nutRestrictions: string;
   nutAllergy: string;
   nutGoal: string;
 };
@@ -90,7 +91,10 @@ export function composeInterestDetails(interest: Interest, values: InterestFormV
     section('Habitos alimentares');
     bullet('Rotina atual', formatOrNA(values.nutHabits));
 
-    section('Restricoes / Alergias');
+    section('Restricoes alimentares');
+    bulletValue(formatOrNA(values.nutRestrictions));
+
+    section('Intolerancia alimentar / Alergia alimentar');
     bulletValue(formatOrNA(values.nutAllergy));
 
     section('Objetivo nutricional');
@@ -109,7 +113,10 @@ export function composeInterestDetails(interest: Interest, values: InterestFormV
     section('Habitos alimentares');
     bullet('Rotina atual', formatOrNA(values.nutHabits));
 
-    section('Restricoes / Alergias');
+    section('Restricoes alimentares');
+    bulletValue(formatOrNA(values.nutRestrictions));
+
+    section('Intolerancia alimentar / Alergia alimentar');
     bulletValue(formatOrNA(values.nutAllergy));
 
     section('Objetivo nutricional');
@@ -149,6 +156,8 @@ type Props = {
   setNutWeight: (v: string) => void;
   nutHabits: string;
   setNutHabits: (v: string) => void;
+  nutRestrictions: string;
+  setNutRestrictions: (v: string) => void;
   nutAllergy: string;
   setNutAllergy: (v: string) => void;
   nutGoal: string;
@@ -182,6 +191,8 @@ const ContactInterestForms: React.FC<Props> = ({
   setNutWeight,
   nutHabits,
   setNutHabits,
+  nutRestrictions,
+  setNutRestrictions,
   nutAllergy,
   setNutAllergy,
   nutGoal,
@@ -264,6 +275,8 @@ const ContactInterestForms: React.FC<Props> = ({
             setNutWeight={setNutWeight}
             nutHabits={nutHabits}
             setNutHabits={setNutHabits}
+            nutRestrictions={nutRestrictions}
+            setNutRestrictions={setNutRestrictions}
             nutAllergy={nutAllergy}
             setNutAllergy={setNutAllergy}
             nutGoal={nutGoal}
@@ -319,7 +332,9 @@ const ContactInterestForms: React.FC<Props> = ({
             <div>
               <div className="mt-4 grid gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Hábitos alimentares</label>
+                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">
+                    Hábitos alimentares <span className="font-semibold text-slate-500">(o que não pode faltar na sua dieta)</span>
+                  </label>
                   <input
                     value={nutHabits}
                     onChange={(e) => setNutHabits(e.target.value)}
@@ -327,7 +342,15 @@ const ContactInterestForms: React.FC<Props> = ({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Restrições / Alergias</label>
+                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Restrições alimentares</label>
+                  <input
+                    value={nutRestrictions}
+                    onChange={(e) => setNutRestrictions(e.target.value)}
+                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Intolerância alimentar / Alergia alimentar</label>
                   <input
                     value={nutAllergy}
                     onChange={(e) => setNutAllergy(e.target.value)}

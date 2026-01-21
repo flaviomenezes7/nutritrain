@@ -26,6 +26,7 @@ const ContactSection: React.FC = () => {
   const [nutHeight, setNutHeight] = useState('');
   const [nutWeight, setNutWeight] = useState('');
   const [nutHabits, setNutHabits] = useState('');
+  const [nutRestrictions, setNutRestrictions] = useState('');
   const [nutAllergy, setNutAllergy] = useState('');
   const [nutGoal, setNutGoal] = useState('');
 
@@ -57,6 +58,7 @@ const ContactSection: React.FC = () => {
     nutHeight,
     nutWeight,
     nutHabits,
+    nutRestrictions,
     nutAllergy,
     nutGoal,
   };
@@ -76,6 +78,7 @@ const ContactSection: React.FC = () => {
     setNutHeight('');
     setNutWeight('');
     setNutHabits('');
+    setNutRestrictions('');
     setNutAllergy('');
     setNutGoal('');
   };
@@ -145,6 +148,7 @@ const ContactSection: React.FC = () => {
       setNutHeight('');
       setNutWeight('');
       setNutHabits('');
+      setNutRestrictions('');
       setNutAllergy('');
       setNutGoal('');
 
@@ -298,6 +302,8 @@ const ContactSection: React.FC = () => {
                   setNutWeight={setNutWeight}
                   nutHabits={nutHabits}
                   setNutHabits={setNutHabits}
+                  nutRestrictions={nutRestrictions}
+                  setNutRestrictions={setNutRestrictions}
                   nutAllergy={nutAllergy}
                   setNutAllergy={setNutAllergy}
                   nutGoal={nutGoal}
