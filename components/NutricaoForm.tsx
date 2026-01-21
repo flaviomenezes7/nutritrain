@@ -109,7 +109,7 @@ const NutricaoForm: React.FC<Props> = ({
         />
       </div>
       <div className="space-y-2 md:col-span-3">
-        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Restrições alimentares</label>
+        <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Alimentos que você evita / não consome</label>
         <input
           value={nutRestrictions}
           onChange={(e) => setNutRestrictions(e.target.value)}

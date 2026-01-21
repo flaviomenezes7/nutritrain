@@ -7,6 +7,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import { initReveal } from './utils/reveal';
 import './reveal.css';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <ContactSection />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 };

@@ -91,7 +91,7 @@ export function composeInterestDetails(interest: Interest, values: InterestFormV
     section('Habitos alimentares');
     bullet('Rotina atual', formatOrNA(values.nutHabits));
 
-    section('Restricoes alimentares');
+    section('Alimentos que voce evita / nao consome');
     bulletValue(formatOrNA(values.nutRestrictions));
 
     section('Intolerancia alimentar / Alergia alimentar');
@@ -113,7 +113,7 @@ export function composeInterestDetails(interest: Interest, values: InterestFormV
     section('Habitos alimentares');
     bullet('Rotina atual', formatOrNA(values.nutHabits));
 
-    section('Restricoes alimentares');
+    section('Alimentos que voce evita / nao consome');
     bulletValue(formatOrNA(values.nutRestrictions));
 
     section('Intolerancia alimentar / Alergia alimentar');
@@ -342,7 +342,7 @@ const ContactInterestForms: React.FC<Props> = ({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Restrições alimentares</label>
+                  <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Alimentos que você evita / não consome</label>
                   <input
                     value={nutRestrictions}
                     onChange={(e) => setNutRestrictions(e.target.value)}
