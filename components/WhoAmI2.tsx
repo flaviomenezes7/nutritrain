@@ -3,6 +3,12 @@ import profile from '../assets/profile.png';
 
 const DOCTOR_NAME = 'Dra. Laiane Fernanda';
 
+const CREDENTIALS = [
+  { label: 'CREFITO', value: '444283-F' },
+  { label: 'CRN', value: '' },
+  { label: 'CREF', value: '' },
+] as const;
+
 const HIGHLIGHTS = [
   {
     title: 'Plano sob medida',
@@ -39,7 +45,15 @@ const Check: React.FC = () => (
   </svg>
 );
 
+const StarIcon: React.FC = () => (
+  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2.6l2.93 5.94 6.56.95-4.74 4.62 1.12 6.53L12 17.56 6.13 20.64l1.12-6.53L2.5 9.49l6.56-.95L12 2.6z" />
+  </svg>
+);
+
 const WhoAmI2: React.FC = () => {
+  const visibleCredentials = CREDENTIALS.filter((c) => (c.value || '').trim().length > 0);
+
   return (
     <section id="quem-sou-eu" className="relative overflow-hidden bg-white pt-28 pb-16">
       <div className="absolute inset-0">
@@ -59,10 +73,39 @@ const WhoAmI2: React.FC = () => {
               Muito prazer, eu sou a <span className="text-emerald-500">{DOCTOR_NAME}</span>
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
-              Acredito que saúde é equilíbrio. Por isso, integro fisioterapia, nutrição e treinamento para tratar a causa,
-              e não só os sintomas — com um acompanhamento humano, acolhedor e baseado em ciência.
-            </p>
+            <div className="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl space-y-3">
+              <p>
+                Acredito que saúde é equilíbrio. Por isso, integro fisioterapia, nutrição e treinamento para tratar a causa
+                — e não só os sintomas.
+              </p>
+              <p>
+                Com um acompanhamento humano, acolhedor e baseado em ciência.
+              </p>
+            </div>
+
+            {visibleCredentials.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-2">
+                {visibleCredentials.map((c) => (
+                  <span
+                    key={c.label}
+                    aria-label={`${c.label} ${c.value}`}
+                    className="inline-flex items-center gap-2 rounded-2xl bg-slate-50 border border-slate-200 px-4 py-2 shadow-sm"
+                  >
+                    <span className="inline-flex items-center justify-center h-7 w-7 rounded-xl bg-white border border-slate-200 text-emerald-600">
+                      <StarIcon />
+                    </span>
+                    <span className="leading-tight">
+                      <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                        {c.label}
+                      </span>
+                      <span className="block text-sm font-extrabold text-slate-900">
+                        {c.value}
+                      </span>
+                    </span>
+                  </span>
+                ))}
+              </div>
+            )}
 
             <div className="mt-7 flex flex-wrap gap-2">
               {PILLARS.map((p) => (
@@ -74,7 +117,10 @@ const WhoAmI2: React.FC = () => {
 
             <div className="mt-10 grid gap-3">
               {HIGHLIGHTS.map((item) => (
-                <div key={item.title} className="flex gap-3 rounded-2xl bg-white border border-slate-200 p-4">
+                <div
+                  key={item.title}
+                  className="flex gap-3 rounded-2xl bg-white border border-slate-200 p-4 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:border-slate-300 focus-within:ring-2 focus-within:ring-emerald-300"
+                >
                   <div className="mt-0.5 text-emerald-600">
                     <Check />
                   </div>
@@ -89,13 +135,13 @@ const WhoAmI2: React.FC = () => {
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
                 href="#contato"
-                className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-8 py-4 font-extrabold text-white hover:bg-slate-800 transition-all shadow-xl shadow-slate-200"
+                className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-8 py-4 font-extrabold text-white hover:bg-slate-800 transition-all shadow-xl shadow-slate-200 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
               >
                 Agende sua avaliação
               </a>
               <a
                 href="#sobre"
-                className="inline-flex items-center justify-center rounded-2xl bg-white border border-slate-200 px-8 py-4 font-extrabold text-slate-800 hover:border-slate-300 transition-all"
+                className="inline-flex items-center justify-center rounded-2xl bg-white border border-slate-200 px-8 py-4 font-extrabold text-slate-800 hover:border-slate-300 transition-all active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
               >
                 Conhecer a NutriTrain
               </a>

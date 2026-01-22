@@ -20,6 +20,10 @@ type Props = {
   setNutAllergy: (v: string) => void;
   nutGoal: string;
   setNutGoal: (v: string) => void;
+
+  errors?: Record<string, string>;
+  touched?: Record<string, boolean>;
+  onTouch?: (key: string) => void;
 };
 
 const NutricaoForm: React.FC<Props> = ({
@@ -37,6 +41,9 @@ const NutricaoForm: React.FC<Props> = ({
   setNutAllergy,
   nutGoal,
   setNutGoal,
+  errors,
+  touched,
+  onTouch,
 }) => {
   return (
     <div className="field-enter grid md:grid-cols-3 gap-4">
@@ -52,7 +59,11 @@ const NutricaoForm: React.FC<Props> = ({
             const digits = e.target.value.replace(/\D/g, '').slice(0, 3);
             setNutAge(digits);
           }}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutAge')}
+          data-field="nutAge"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutAge && errors?.nutAge ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2">
@@ -77,7 +88,11 @@ const NutricaoForm: React.FC<Props> = ({
             }
             setNutHeight(raw);
           }}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutHeight')}
+          data-field="nutHeight"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutHeight && errors?.nutHeight ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2">
@@ -95,7 +110,11 @@ const NutricaoForm: React.FC<Props> = ({
             const v = decimal ? integer + '.' + decimal : integer;
             setNutWeight(v);
           }}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutWeight')}
+          data-field="nutWeight"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutWeight && errors?.nutWeight ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2 md:col-span-3">
@@ -105,7 +124,11 @@ const NutricaoForm: React.FC<Props> = ({
         <input
           value={nutHabits}
           onChange={(e) => setNutHabits(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutHabits')}
+          data-field="nutHabits"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutHabits && errors?.nutHabits ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2 md:col-span-3">
@@ -113,7 +136,11 @@ const NutricaoForm: React.FC<Props> = ({
         <input
           value={nutRestrictions}
           onChange={(e) => setNutRestrictions(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutRestrictions')}
+          data-field="nutRestrictions"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutRestrictions && errors?.nutRestrictions ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2 md:col-span-3">
@@ -121,7 +148,11 @@ const NutricaoForm: React.FC<Props> = ({
         <input
           value={nutAllergy}
           onChange={(e) => setNutAllergy(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutAllergy')}
+          data-field="nutAllergy"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutAllergy && errors?.nutAllergy ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2 md:col-span-3">
@@ -129,7 +160,11 @@ const NutricaoForm: React.FC<Props> = ({
         <input
           value={nutGoal}
           onChange={(e) => setNutGoal(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('nutGoal')}
+          data-field="nutGoal"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.nutGoal && errors?.nutGoal ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
     </div>

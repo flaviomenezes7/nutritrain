@@ -1,0 +1,80 @@
+/* Global micro-UX helpers (no extra deps) */
+
+:root {
+  --nt-focus: 16 185 129; /* emerald-500 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchor jumps due to fixed navbar */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.22);
+}
+
+/* Better keyboard focus */
+:focus-visible {
+  outline: 2px solid rgb(var(--nt-focus));
+  outline-offset: 2px;
+}
+
+/* Subtle hover lift utility */
+.nt-lift {
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+.nt-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Soft shine for CTAs */
+.nt-shine {
+  position: relative;
+  overflow: hidden;
+}
+.nt-shine::after {
+  content: '';
+  position: absolute;
+  inset: -40% -80%;
+  transform: translateX(-30%) rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+.nt-shine:hover::after {
+  opacity: 1;
+  animation: nt-shine-move 900ms ease;
+}
+@keyframes nt-shine-move {
+  from { transform: translateX(-60%) rotate(18deg); }
+  to { transform: translateX(60%) rotate(18deg); }
+}
+
+/* Floating blob animation */
+.nt-float {
+  animation: nt-float 7s ease-in-out infinite;
+}
+.nt-float-slow {
+  animation: nt-float 10s ease-in-out infinite;
+}
+@keyframes nt-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(8px, -10px); }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -14,6 +14,10 @@ type Props = {
   setFisioHistory: (v: string) => void;
   fisioGoal: string;
   setFisioGoal: (v: string) => void;
+
+  errors?: Record<string, string>;
+  touched?: Record<string, boolean>;
+  onTouch?: (key: string) => void;
 };
 
 const FisioterapiaForm: React.FC<Props> = ({
@@ -25,6 +29,9 @@ const FisioterapiaForm: React.FC<Props> = ({
   setFisioHistory,
   fisioGoal,
   setFisioGoal,
+  errors,
+  touched,
+  onTouch,
 }) => {
   return (
     <div className="field-enter space-y-4">
@@ -34,7 +41,11 @@ const FisioterapiaForm: React.FC<Props> = ({
         <input
           value={fisioInjury}
           onChange={(e) => setFisioInjury(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('fisioInjury')}
+          data-field="fisioInjury"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.fisioInjury && errors?.fisioInjury ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="grid md:grid-cols-2 gap-4">
@@ -43,7 +54,11 @@ const FisioterapiaForm: React.FC<Props> = ({
           <input
             value={fisioTime}
             onChange={(e) => setFisioTime(e.target.value)}
-            className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+            onBlur={() => onTouch?.('fisioTime')}
+            data-field="fisioTime"
+            className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+              touched?.fisioTime && errors?.fisioTime ? 'border-red-300 focus:ring-red-300' : ''
+            }`}
           />
         </div>
         <div className="space-y-2">
@@ -51,7 +66,11 @@ const FisioterapiaForm: React.FC<Props> = ({
           <input
             value={fisioHistory}
             onChange={(e) => setFisioHistory(e.target.value)}
-            className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+            onBlur={() => onTouch?.('fisioHistory')}
+            data-field="fisioHistory"
+            className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+              touched?.fisioHistory && errors?.fisioHistory ? 'border-red-300 focus:ring-red-300' : ''
+            }`}
           />
         </div>
       </div>
@@ -60,7 +79,11 @@ const FisioterapiaForm: React.FC<Props> = ({
         <input
           value={fisioGoal}
           onChange={(e) => setFisioGoal(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('fisioGoal')}
+          data-field="fisioGoal"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.fisioGoal && errors?.fisioGoal ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
     </div>

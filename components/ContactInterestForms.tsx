@@ -130,6 +130,10 @@ type Props = {
   interest: Interest;
   setInterest: (v: Interest) => void;
 
+  errors?: Record<string, string>;
+  touched?: Record<string, boolean>;
+  onTouch?: (key: string) => void;
+
   efAge: string;
   setEfAge: (v: string) => void;
   efHeight: string;
@@ -197,8 +201,14 @@ const ContactInterestForms: React.FC<Props> = ({
   setNutAllergy,
   nutGoal,
   setNutGoal,
+  errors,
+  touched,
+  onTouch,
 }) => {
   if (!interest) return null;
+
+  const hasError = (key: string) => Boolean(touched?.[key] && errors?.[key]);
+  const errorClass = (key: string) => (hasError(key) ? 'border-red-300 focus:ring-red-300' : '');
 
   const sharedAge = efAge || nutAge;
   const sharedHeight = efHeight || nutHeight;
@@ -249,6 +259,9 @@ const ContactInterestForms: React.FC<Props> = ({
             setEfWeight={setEfWeight}
             efGoal={efGoal}
             setEfGoal={setEfGoal}
+            errors={errors}
+            touched={touched}
+            onTouch={onTouch}
           />
         )}
 
@@ -262,6 +275,9 @@ const ContactInterestForms: React.FC<Props> = ({
             setFisioHistory={setFisioHistory}
             fisioGoal={fisioGoal}
             setFisioGoal={setFisioGoal}
+            errors={errors}
+            touched={touched}
+            onTouch={onTouch}
           />
         )}
 
@@ -281,6 +297,9 @@ const ContactInterestForms: React.FC<Props> = ({
             setNutAllergy={setNutAllergy}
             nutGoal={nutGoal}
             setNutGoal={setNutGoal}
+            errors={errors}
+            touched={touched}
+            onTouch={onTouch}
           />
         )}
 
@@ -294,7 +313,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={sharedAge}
                     onChange={(e) => setSharedAge(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('baseAge')}
+                    data-field="baseAge"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('baseAge')}`}
                   />
                 </div>
                 <div className="space-y-2">
@@ -302,7 +323,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={sharedHeight}
                     onChange={(e) => setSharedHeight(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('baseHeight')}
+                    data-field="baseHeight"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('baseHeight')}`}
                   />
                 </div>
                 <div className="space-y-2">
@@ -310,7 +333,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={sharedWeight}
                     onChange={(e) => setSharedWeight(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('baseWeight')}
+                    data-field="baseWeight"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('baseWeight')}`}
                   />
                 </div>
               </div>
@@ -323,7 +348,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={efGoal}
                     onChange={(e) => setEfGoal(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('efGoal')}
+                    data-field="efGoal"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('efGoal')}`}
                   />
                 </div>
               </div>
@@ -338,7 +365,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={nutHabits}
                     onChange={(e) => setNutHabits(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('nutHabits')}
+                    data-field="nutHabits"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('nutHabits')}`}
                   />
                 </div>
                 <div className="space-y-2">
@@ -346,7 +375,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={nutRestrictions}
                     onChange={(e) => setNutRestrictions(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('nutRestrictions')}
+                    data-field="nutRestrictions"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('nutRestrictions')}`}
                   />
                 </div>
                 <div className="space-y-2">
@@ -354,7 +385,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={nutAllergy}
                     onChange={(e) => setNutAllergy(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('nutAllergy')}
+                    data-field="nutAllergy"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('nutAllergy')}`}
                   />
                 </div>
                 <div className="space-y-2">
@@ -362,7 +395,9 @@ const ContactInterestForms: React.FC<Props> = ({
                   <input
                     value={nutGoal}
                     onChange={(e) => setNutGoal(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+                    onBlur={() => onTouch?.('nutGoal')}
+                    data-field="nutGoal"
+                    className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('nutGoal')}`}
                   />
                 </div>
               </div>

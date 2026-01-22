@@ -14,6 +14,10 @@ type Props = {
   setEfWeight: (v: string) => void;
   efGoal: string;
   setEfGoal: (v: string) => void;
+
+  errors?: Record<string, string>;
+  touched?: Record<string, boolean>;
+  onTouch?: (key: string) => void;
 };
 
 const EducacaoFisicaForm: React.FC<Props> = ({
@@ -25,6 +29,9 @@ const EducacaoFisicaForm: React.FC<Props> = ({
   setEfWeight,
   efGoal,
   setEfGoal,
+  errors,
+  touched,
+  onTouch,
 }) => {
   const onlyDigits3 = (value: string) => value.replace(/\D/g, '').slice(0, 3);
 
@@ -43,10 +50,14 @@ const EducacaoFisicaForm: React.FC<Props> = ({
         <input
           value={efAge}
           onChange={(e) => setEfAge(onlyDigits3(e.target.value))}
+          onBlur={() => onTouch?.('efAge')}
           inputMode="numeric"
           pattern="[0-9]*"
           maxLength={3}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          data-field="efAge"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.efAge && errors?.efAge ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2">
@@ -54,11 +65,15 @@ const EducacaoFisicaForm: React.FC<Props> = ({
         <input
           value={efHeight}
           onChange={(e) => setEfHeight(formatHeight(e.target.value))}
+          onBlur={() => onTouch?.('efHeight')}
           inputMode="numeric"
           pattern="[0-9]*"
           maxLength={4}
           placeholder=""
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          data-field="efHeight"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.efHeight && errors?.efHeight ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2">
@@ -66,10 +81,14 @@ const EducacaoFisicaForm: React.FC<Props> = ({
         <input
           value={efWeight}
           onChange={(e) => setEfWeight(onlyDigits3(e.target.value))}
+          onBlur={() => onTouch?.('efWeight')}
           inputMode="numeric"
           pattern="[0-9]*"
           maxLength={3}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          data-field="efWeight"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.efWeight && errors?.efWeight ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
       <div className="space-y-2 md:col-span-3">
@@ -77,7 +96,11 @@ const EducacaoFisicaForm: React.FC<Props> = ({
         <input
           value={efGoal}
           onChange={(e) => setEfGoal(e.target.value)}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400"
+          onBlur={() => onTouch?.('efGoal')}
+          data-field="efGoal"
+          className={`w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:scale-[1.01] focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${
+            touched?.efGoal && errors?.efGoal ? 'border-red-300 focus:ring-red-300' : ''
+          }`}
         />
       </div>
     </div>

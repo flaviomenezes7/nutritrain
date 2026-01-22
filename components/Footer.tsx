@@ -54,6 +54,11 @@ const Footer: React.FC = () => {
           <p className="text-slate-400 text-xs">
             © {new Date().getFullYear()} NutriTrain Saúde Integrada. Todos os direitos reservados.
           </p>
+          <p className="mt-3 text-slate-400 text-[11px]">
+            Ícones: <a className="underline hover:text-emerald-600" href="https://www.flaticon.com/br/icones-gratis/maca" title="maçã ícones" target="_blank" rel="noreferrer">Maçã</a> (Freepik/Flaticon),{' '}
+            <a className="underline hover:text-emerald-600" href="https://www.flaticon.com/br/icones-gratis/atleta" title="atleta ícones" target="_blank" rel="noreferrer">Atleta</a> (Freepik/Flaticon),{' '}
+            <a className="underline hover:text-emerald-600" href="https://www.flaticon.com/br/icones-gratis/recuperacao" title="recuperação ícones" target="_blank" rel="noreferrer">Recuperação</a> (Uniconlabs/Flaticon).
+          </p>
         </div>
       </div>
     </footer>

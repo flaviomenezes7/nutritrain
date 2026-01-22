@@ -5,6 +5,7 @@ import WhoAmI2 from './components/WhoAmI2';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 import { initReveal } from './utils/reveal';
 import './reveal.css';
 import { Analytics } from '@vercel/analytics/react';
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         <ContactSection />
       </main>
       <Footer />
+      <BackToTop />
       <Analytics />
     </div>
   );
