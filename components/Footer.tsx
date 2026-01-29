@@ -1,6 +1,6 @@
 
 import React from 'react';
-import logoNutriTrain from '../assets/logo_nutritrain_nova.png';
+import logoNutriTrain from '../assets/nutritrain_logo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -8,11 +8,11 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid gap-10 md:grid-cols-3 mb-12">
           <div>
-            <div className="flex items-center space-x-4 mb-4">
+            <div className="flex items-center space-x-4 mb-4 translate-y-2">
               <img
                 src={logoNutriTrain}
                 alt="Logo NutriTrain"
-                className="h-16 w-16 object-contain scale-[3] origin-left"
+                className="h-16 w-16 object-contain scale-[3.6] origin-left"
               />
             </div>
             <p className="text-slate-500 max-w-sm leading-relaxed">
