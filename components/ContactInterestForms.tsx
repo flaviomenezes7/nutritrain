@@ -210,6 +210,15 @@ const ContactInterestForms: React.FC<Props> = ({
   const hasError = (key: string) => Boolean(touched?.[key] && errors?.[key]);
   const errorClass = (key: string) => (hasError(key) ? 'border-red-300 focus:ring-red-300' : '');
 
+  const onlyDigits3 = (value: string) => value.replace(/\D/g, '').slice(0, 3);
+
+  const formatHeight = (value: string) => {
+    const digits = onlyDigits3(value);
+    if (digits.length <= 1) return digits;
+    if (digits.length === 2) return `${digits[0]}.${digits[1]}`;
+    return `${digits[0]}.${digits[1]}${digits[2]}`;
+  };
+
   const sharedAge = efAge || nutAge;
   const sharedHeight = efHeight || nutHeight;
   const sharedWeight = efWeight || nutWeight;
@@ -312,8 +321,11 @@ const ContactInterestForms: React.FC<Props> = ({
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Idade</label>
                   <input
                     value={sharedAge}
-                    onChange={(e) => setSharedAge(e.target.value)}
+                    onChange={(e) => setSharedAge(onlyDigits3(e.target.value))}
                     onBlur={() => onTouch?.('baseAge')}
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={3}
                     data-field="baseAge"
                     className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('baseAge')}`}
                   />
@@ -322,8 +334,11 @@ const ContactInterestForms: React.FC<Props> = ({
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Altura (m)</label>
                   <input
                     value={sharedHeight}
-                    onChange={(e) => setSharedHeight(e.target.value)}
+                    onChange={(e) => setSharedHeight(formatHeight(e.target.value))}
                     onBlur={() => onTouch?.('baseHeight')}
+                    inputMode="decimal"
+                    pattern="\d+(?:[.,]\d{1,2})?"
+                    maxLength={4}
                     data-field="baseHeight"
                     className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('baseHeight')}`}
                   />
@@ -332,8 +347,11 @@ const ContactInterestForms: React.FC<Props> = ({
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Peso (kg)</label>
                   <input
                     value={sharedWeight}
-                    onChange={(e) => setSharedWeight(e.target.value)}
+                    onChange={(e) => setSharedWeight(onlyDigits3(e.target.value))}
                     onBlur={() => onTouch?.('baseWeight')}
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={3}
                     data-field="baseWeight"
                     className={`w-full bg-white border border-slate-200 rounded-2xl p-4 text-slate-900 outline-none transition transform duration-200 ease-out focus:-translate-y-1 focus:shadow-xl focus:ring-2 focus:ring-emerald-400 ${errorClass('baseWeight')}`}
                   />

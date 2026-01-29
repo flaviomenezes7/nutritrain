@@ -6,7 +6,7 @@ const DOCTOR_NAME = 'Dra. Laiane Fernanda';
 const CREDENTIALS = [
   { label: 'CREFITO', value: '444283-F' },
   { label: 'CRN', value: '' },
-  { label: 'CREF', value: '' },
+  { label: 'CREF', value: '015096-G/ES' },
 ] as const;
 
 const HIGHLIGHTS = [
@@ -28,10 +28,6 @@ const PILLARS = [
   {
     label: 'Fisioterapia',
     className: 'bg-orange-100 text-orange-700 border border-orange-200',
-  },
-  {
-    label: 'Nutrição',
-    className: 'bg-emerald-100 text-emerald-700 border border-emerald-200',
   },
   {
     label: 'Treinamento',
@@ -135,7 +131,7 @@ const WhoAmI2: React.FC = () => {
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
                 href="#contato"
-                className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-8 py-4 font-extrabold text-white hover:bg-slate-800 transition-all shadow-xl shadow-slate-200 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-8 py-4 font-extrabold text-white hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-100 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
               >
                 Agende sua avaliação
               </a>

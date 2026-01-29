@@ -66,8 +66,8 @@ const EducacaoFisicaForm: React.FC<Props> = ({
           value={efHeight}
           onChange={(e) => setEfHeight(formatHeight(e.target.value))}
           onBlur={() => onTouch?.('efHeight')}
-          inputMode="numeric"
-          pattern="[0-9]*"
+          inputMode="decimal"
+          pattern="\d+(?:[.,]\d{1,2})?"
           maxLength={4}
           placeholder=""
           data-field="efHeight"

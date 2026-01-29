@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import WhoAmI2 from './components/WhoAmI2';
+import WhoAmINutricionista from './components/WhoAmINutricionista';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -21,6 +22,9 @@ const App: React.FC = () => {
       <main>
         {/* Seção 1: Quem Sou Eu */}
         <WhoAmI2 />
+
+        {/* Seção 1.2: Nutricionista */}
+        <WhoAmINutricionista />
         
         {/* Seção 2: Sobre a NutriTrain */}
         <AboutSection />

@@ -3,7 +3,7 @@ import ContactInterestForms, { composeInterestDetails, type Interest, type Inter
 
 type Status = 'idle' | 'opening' | 'sent';
 
-const WHATSAPP_TO = '5527996115905';
+const WHATSAPP_TO = '5527996649908';
 
 const ContactSection: React.FC = () => {
   const [name, setName] = useState('');
@@ -366,7 +366,7 @@ const ContactSection: React.FC = () => {
                 </p>
 
                 <div className="mt-6 text-sm text-slate-700">
-                  WhatsApp: <span className="font-extrabold text-slate-900">+55 (27) 99611-5905</span>
+                  WhatsApp: <span className="font-extrabold text-slate-900">+55 (27) 99664-9908</span>
                 </div>
 
                 <div className="mt-8 rounded-3xl bg-slate-50 border border-slate-200 p-6">
