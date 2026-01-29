@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import logoNutriTrain from '../assets/logo_nutritrain_nova.png';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,11 +55,12 @@ const Navbar: React.FC = () => {
       `}</style>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-effect shadow-md py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
-            <span className="text-white font-black text-xl">NT</span>
-          </div>
-          <span className="text-2xl font-bold tracking-tight text-slate-900">Nutri<span className="text-emerald-500">Train</span></span>
+        <div className="flex items-center space-x-4">
+          <img
+            src={logoNutriTrain}
+            alt="Logo NutriTrain"
+            className="h-16 w-16 object-contain scale-[3.4] origin-left shrink-0"
+          />
         </div>
         
         <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
