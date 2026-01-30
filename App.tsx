@@ -10,6 +10,7 @@ import BackToTop from './components/BackToTop';
 import { initReveal } from './utils/reveal';
 import './reveal.css';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -35,6 +36,7 @@ const App: React.FC = () => {
       <Footer />
       <BackToTop />
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 };
