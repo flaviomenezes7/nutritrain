@@ -351,12 +351,12 @@ const ContactSection: React.FC = () => {
 
   return (
     <section id="contato" className="py-24 bg-slate-50">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200">
             <div className="absolute inset-x-0 -top-32 h-64 bg-gradient-to-br from-emerald-100 via-white to-blue-100 opacity-80" />
 
-            <div className="relative grid gap-10 p-8 md:grid-cols-5 md:p-12">
+            <div className="relative grid gap-10 p-6 sm:p-8 md:grid-cols-5 md:p-12">
               <div className="md:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
                   Fale com a gente
@@ -426,7 +426,7 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              <form onSubmit={onSubmit} className="space-y-5 md:col-span-3">
+              <form onSubmit={onSubmit} className="space-y-6 md:col-span-3 md:space-y-5">
                 {submitAttempted && hasErrors && (
                   <div
                     role="alert"
@@ -463,7 +463,7 @@ const ContactSection: React.FC = () => {
 
                 <div ref={interestSectionRef}>
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Escolha seu interesse</label>
-                  <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
                     {interests.map((it) => {
                       const active = interest === it;
                       const meta = interestMeta[it];

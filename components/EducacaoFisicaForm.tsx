@@ -43,7 +43,7 @@ const EducacaoFisicaForm: React.FC<Props> = ({
   };
 
   return (
-    <div className="field-enter grid md:grid-cols-3 gap-4">
+    <div className="field-enter grid md:grid-cols-3 gap-5 sm:gap-4">
       <style>{styles}</style>
       <div className="space-y-2">
         <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Idade</label>

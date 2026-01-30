@@ -34,7 +34,7 @@ const FisioterapiaForm: React.FC<Props> = ({
   onTouch,
 }) => {
   return (
-    <div className="field-enter space-y-4">
+    <div className="field-enter space-y-5">
       <style>{styles}</style>
       <div className="space-y-2">
         <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Lesão / Queixa principal</label>
@@ -48,7 +48,7 @@ const FisioterapiaForm: React.FC<Props> = ({
           }`}
         />
       </div>
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-5 sm:gap-4">
         <div className="space-y-2">
           <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Tempo da lesão</label>
           <input

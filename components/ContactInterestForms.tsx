@@ -239,8 +239,8 @@ const ContactInterestForms: React.FC<Props> = ({
   };
 
   return (
-    <div className="rounded-3xl bg-slate-50 p-6 border border-slate-200">
-      <div className="flex items-start justify-between gap-4">
+    <div className="rounded-3xl bg-slate-50 p-5 sm:p-6 border border-slate-200">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
         <div>
           <div className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Formulário rápido</div>
           <div className="mt-1 text-lg font-extrabold text-slate-900">{interest}</div>
@@ -313,10 +313,10 @@ const ContactInterestForms: React.FC<Props> = ({
         )}
 
         {interest === 'Prescrição de treino e dieta' && (
-          <div className="space-y-8">
+          <div className="space-y-10 sm:space-y-8">
             <div>
               <div className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Dados base</div>
-              <div className="mt-4 grid md:grid-cols-3 gap-4">
+              <div className="mt-4 grid md:grid-cols-3 gap-5 sm:gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Idade</label>
                   <input
@@ -360,7 +360,7 @@ const ContactInterestForms: React.FC<Props> = ({
             </div>
 
             <div>
-              <div className="mt-4 grid gap-4">
+              <div className="mt-4 grid gap-5 sm:gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">Objetivo de treino</label>
                   <input
@@ -375,7 +375,7 @@ const ContactInterestForms: React.FC<Props> = ({
             </div>
 
             <div>
-              <div className="mt-4 grid gap-4">
+              <div className="mt-4 grid gap-5 sm:gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-600 uppercase tracking-wider">
                     Hábitos alimentares <span className="font-semibold text-slate-500">(o que não pode faltar na sua dieta)</span>
